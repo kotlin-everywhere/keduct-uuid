@@ -40,7 +40,7 @@ class TestUuid {
         Assert.assertEquals(err("Expecting a String but instead got: 3.14"), decodeString(Uuid.decoder, "3.14"))
         Assert.assertEquals(err("Invalid UUID string: hello"), decodeString(Uuid.decoder, "\"hello\""))
         Assert.assertEquals(err("Expecting a String but instead got: {\"hello\":42}"), decodeString(Uuid.decoder, "{ \"hello\": 42 }"))
-        Assert.assertEquals(Uuid.fromString("87eb50f6-8bb7-11e7-814c-5b8cec49619a"), decodeString(Uuid.decoder, "87eb50f6-8bb7-11e7-814c-5b8cec49619a"))
+        Assert.assertEquals(Uuid.fromString("87eb50f6-8bb7-11e7-814c-5b8cec49619a"), decodeString(Uuid.decoder, "\"87eb50f6-8bb7-11e7-814c-5b8cec49619a\""))
     }
 
     @Test
