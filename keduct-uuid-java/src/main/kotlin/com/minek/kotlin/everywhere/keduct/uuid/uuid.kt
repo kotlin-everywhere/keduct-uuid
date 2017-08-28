@@ -1,5 +1,6 @@
 package com.minek.kotlin.everywhere.keduct.uuid
 
+import com.minek.kotlin.everywehre.keuson.convert.Converter
 import com.minek.kotlin.everywehre.keuson.decode.Decoder
 import com.minek.kotlin.everywehre.keuson.decode.Decoders
 import com.minek.kotlin.everywehre.keuson.encode.Encoder
@@ -14,6 +15,7 @@ data class Uuid(private val uuid: UUID) {
     companion object {
         val decoder: Decoder<Uuid> = { Decoders.string(it).andThen { fromString(it) } }
         val encoder: Encoder<Uuid> = { Encoders.string(it.toString()) }
+        val converter: Converter<Uuid> = encoder to decoder
 
         fun fromString(string: String): Result<String, Uuid> {
             return try {
