@@ -1,9 +1,11 @@
 package com.minek.kotlin.everywhere.keduct
 
+import com.minek.kotlin.everywehre.keuson.convert.decoder
 import com.minek.kotlin.everywehre.keuson.decode.decodeString
 import com.minek.kotlin.everywehre.keuson.encode.encode
 import com.minek.kotlin.everywhere.keduct.uuid.Uuid
 import com.minek.kotlin.everywhere.keduct.uuid.UuidJs
+import com.minek.kotlin.everywhere.kelibs.result.andThen
 import com.minek.kotlin.everywhere.kelibs.result.err
 import com.minek.kotlin.everywhere.kelibs.result.map
 import com.minek.kotlin.everywhere.kelibs.result.ok
@@ -48,6 +50,16 @@ class TestUuid {
         assertEquals(
                 ok("\"87eb50f6-8bb7-11e7-814c-5b8cec49619a\""),
                 Uuid.fromString("87eb50f6-8bb7-11e7-814c-5b8cec49619a").map { encode(Uuid.encoder(it)) }
+        )
+    }
+
+    @Test
+    fun testConverter() {
+        assertEquals(
+                Uuid.fromString("87eb50f6-8bb7-11e7-814c-5b8cec49619a"),
+                Uuid.fromString("87eb50f6-8bb7-11e7-814c-5b8cec49619a")
+                        .map { encode(Uuid.converter.first(it)) }
+                        .andThen { decodeString(Uuid.converter.decoder, it) }
         )
     }
 }
