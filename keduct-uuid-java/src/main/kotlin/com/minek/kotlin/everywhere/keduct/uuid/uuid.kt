@@ -12,6 +12,12 @@ import com.minek.kotlin.everywhere.kelibs.result.andThen
 import java.util.*
 
 data class Uuid(private val uuid: UUID) {
+    val javaUuid: UUID = uuid
+
+    override fun toString(): String {
+        return uuid.toString()
+    }
+
     companion object {
         val decoder: Decoder<Uuid> = { Decoders.string(it).andThen { fromString(it) } }
         val encoder: Encoder<Uuid> = { Encoders.string(it.toString()) }
@@ -28,10 +34,6 @@ data class Uuid(private val uuid: UUID) {
         fun randomUuid(): Uuid {
             return Uuid(UUID.randomUUID())
         }
-    }
-
-    override fun toString(): String {
-        return uuid.toString()
     }
 }
 

@@ -29,6 +29,12 @@ class TestUuid {
     }
 
     @Test
+    fun testAsJavaUuid() {
+        val javaUuid = UUID.randomUUID()
+        Assert.assertEquals(javaUuid, Uuid(javaUuid).javaUuid)
+    }
+
+    @Test
     fun testRandomUuid() {
         val uuid = Uuid.randomUuid()
         Assert.assertEquals(uuid, Uuid(UUID.fromString(uuid.toString())))
