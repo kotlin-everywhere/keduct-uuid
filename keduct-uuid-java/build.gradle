@@ -44,6 +44,6 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
     compile 'com.github.kotlin-everywhere.kelibs-result:kelibs-result-java:28ffaafc90683611f9ba97221a6191264db614a9'
-    compile 'com.github.kotlin-everywhere.keuson:keuson-java:fc8a2b75bf5ffd309e23756bd1275695fc270bc2'
+    compile 'com.github.kotlin-everywhere.keuson:keuson-java:dbae34fff37b91cbacce46585fce687a224a3673'
     testCompile 'junit:junit:4.12'
 }
